@@ -1,18 +1,11 @@
-import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+const express = require('express');
+const app = express();
+const port = 3000;
 
-import "simplebar/dist/simplebar.min.css";
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
-const container = document.getElementById("root")!;
-const root = createRoot(container);
-
-root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-);
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
